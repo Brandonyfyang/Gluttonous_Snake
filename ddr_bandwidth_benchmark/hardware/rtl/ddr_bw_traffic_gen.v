@@ -145,7 +145,7 @@ module ddr_bw_traffic_gen #
 
     // Burst size in bytes (burst_len * BYTES_PER_BEAT)
     wire [C_M_AXI_ADDR_WIDTH-1:0] burst_size_bytes;
-    assign burst_size_bytes = {56'b0, burst_len_reg} * BYTES_PER_BEAT;
+    assign burst_size_bytes = {{(C_M_AXI_ADDR_WIDTH-8){1'b0}}, burst_len_reg} * BYTES_PER_BEAT;
 
     // -----------------------------------------------------------------------
     // Fixed AXI channel assignments (non-configurable fields)

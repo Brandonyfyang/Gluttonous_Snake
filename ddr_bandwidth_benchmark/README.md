@@ -275,7 +275,7 @@ Expected output (approximate):
 
 ### Step-by-step
 
-1. Create a new Vivado project targeting the KV260 (`xcvm1802-vsva2197-2MP-e-S`).
+1. Create a new Vivado project targeting the KV260 (`xck26-sfvc784-2LV-c`).
 2. Add a block design.
 3. Add the Zynq UltraScale+ MPSoC IP and run block automation.
 4. Add the four RTL source files as HDL sources:
@@ -299,10 +299,11 @@ the Zynq IP configuration to avoid width conversion overhead.
 
 ### Clock Frequency
 
-The default `pl_clk0` on KV260 is **100 MHz**. For higher bandwidth, set it to
-**300 MHz** via the Zynq IP PL fabric clock configuration, or use a Clocking Wizard
-IP to generate the desired frequency. Update `clk_freq_mhz` in your Python config
-to match.
+The hardware reset `pl_clk0` on KV260 defaults to **100 MHz**. The Python `BenchmarkConfig`
+defaults `clk_freq_mhz` to **300 MHz**, which is the recommended PL clock frequency for
+bandwidth experiments. To use 300 MHz, configure it via the Zynq IP PL fabric clock settings
+in Vivado or via a Clocking Wizard IP. Always set `clk_freq_mhz` in your Python config to
+match the actual frequency used in your bitstream.
 
 ---
 
